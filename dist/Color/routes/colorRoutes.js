@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const colorController_1 = require("../controller/colorController");
+const auth_1 = require("../../shared/middlewares/auth");
+const colorRoutes = (0, express_1.Router)();
+colorRoutes.get('/', auth_1.authMiddleware, colorController_1.getColors);
+colorRoutes.get('/:color_id', auth_1.authMiddleware, colorController_1.getColorById);
+colorRoutes.post('/', auth_1.authMiddleware, colorController_1.createColor);
+colorRoutes.put('/:color_id', auth_1.authMiddleware, colorController_1.updateColor);
+colorRoutes.delete('/:color_id', auth_1.authMiddleware, colorController_1.deleteColor);
+exports.default = colorRoutes;

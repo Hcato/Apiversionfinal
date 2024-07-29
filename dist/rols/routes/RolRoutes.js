@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const RolController_1 = require("../controllers/RolController");
+const auth_1 = require("../../shared/middlewares/auth");
+const rolsRoutes = (0, express_1.Router)();
+rolsRoutes.get('/', auth_1.authMiddleware, RolController_1.getRols);
+rolsRoutes.get('/:rol_id', auth_1.authMiddleware, RolController_1.getRolById);
+rolsRoutes.post('/', auth_1.authMiddleware, RolController_1.createRol);
+rolsRoutes.put('/:rol_id', auth_1.authMiddleware, RolController_1.updateRol);
+rolsRoutes.delete('/:rol_id', auth_1.authMiddleware, RolController_1.deleteRol);
+exports.default = rolsRoutes;

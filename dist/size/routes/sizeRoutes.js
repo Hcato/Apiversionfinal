@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const sizeController_1 = require("../controller/sizeController");
+const auth_1 = require("../../shared/middlewares/auth");
+const sizeRoutes = (0, express_1.Router)();
+sizeRoutes.get('/', auth_1.authMiddleware, sizeController_1.getSizes);
+sizeRoutes.get('/:size_id', auth_1.authMiddleware, sizeController_1.getSizeById);
+sizeRoutes.post('/', auth_1.authMiddleware, sizeController_1.createSize);
+sizeRoutes.put('/:size_id', auth_1.authMiddleware, sizeController_1.updateSize);
+sizeRoutes.delete('/:size_id', auth_1.authMiddleware, sizeController_1.deleteSize);
+exports.default = sizeRoutes;
